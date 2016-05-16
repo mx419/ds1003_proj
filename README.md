@@ -43,10 +43,14 @@ The bigfile.csv is the dataframe we are going to merge in the next step.
     * Get two alternative stations nearby which meet with the criterion: I. within 15-minute walk, II. predicted to be recommended.
 
 ### Part 4: Feature Selection
+```sh
+python xxx.py
+```
+It will generate 16 files corresponding to each legal fields under ./code/field/ directory.
 
 
 ### Part 5 : Modeling and Generating key word features
-
+This part will use dataframe from part4 feature selection.
 1. Find target word feature id
 ``` sh
 python word_generate.py
