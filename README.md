@@ -20,7 +20,7 @@ $ cd code
 2. poster: contains poster we used in poster session
 3. report: contains final report
 
-### Part 2 : Label generation
+### Part 2 : Label Generation
 Run the following command in terminal. It will generate new files with binary panel vote label.
 ``` sh
 $ python label_generation.py
