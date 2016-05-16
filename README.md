@@ -8,7 +8,9 @@
 
 ### Part 0: 
 -code: contains all code and data we used in this project
+
 -poster: contains poster we used in poster session
+
 -report: contains final report
 
 ### Part 1: Environment Setup
