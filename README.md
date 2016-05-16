@@ -14,7 +14,6 @@ Note: You can run the commands in Part5 directly to get the result. But you can 
 $ git clone [git-repo-url]
 $ cd code
 ```
-2. Make sure you have installed sklearn, numpy and pandas packages.
 
 ### Part 1: File Description
 1. code: contains all code and data we used in this project
