@@ -21,7 +21,7 @@ $ cd code
 3. report: contains final report
 
 ### Part 2 : Label Generation
-Run the following command in terminal. It will generate new files with binary panel vote label.
+Run the following command in terminal. It will generate new files with binary panel vote label. It use the data from Circuit_Cases.
 ``` sh
 $ python label_generation.py
 ```
