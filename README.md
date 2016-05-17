@@ -54,7 +54,7 @@ This part will use dataframe from part4 feature selection. We also check the cor
 ``` sh
 python word_generate.py
 ```
-    * It will save a pickle file, which contains the target word id list we need to find in Vocab_map_text file.
+It will save a pickle file, which contains the target word id list we need to find in Vocab_map_text file.
 
 2. Match targe word feature id with its real ngram
 
