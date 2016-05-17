@@ -40,6 +40,10 @@ The bigfile.csv is the dataframe we are going to merge in the next step.
 2. Clean Vocab_map_text file.
     * Finding target case id list from step 1. It will convert the original vocab_map_txt file format into (word_id, n-gram dictionary) format.
     * It will delivery a target_ngram_df.
+    * Put clean_ngram.py and run_loop.sh in the same directory. You can modify path in run_loop.sh. Then run the following command in terminal
+    ```sh
+    bash run_loop.sh
+    ```
 
 3. Merge init_df, target_ngram_df and bigfile.csv. We then get our final_df which contains case_id, n-gram, panel_vote, issue(int) and legal field(string).
 
@@ -48,7 +52,7 @@ The bigfile.csv is the dataframe we are going to merge in the next step.
 ```sh
 python xxx.py
 ```
-It will generate 16 files corresponding to each legal fields under ./code/field/ directory.
+It will generate 16 files corresponding to each legal fields under ./field/ directory.
 
 
 ### Part 5 : Modeling and Generating Key Word Features
@@ -60,6 +64,7 @@ python word_generate.py
     * It will save a pickle file, which contains the target word id list we need to find in Vocab_map_text file.
 
 2. Match targe word feature id with its real ngram
+    * findid.py is the python file to find real n-gram in vocab_map_text file. You can modify the path to run it.
 
 3. Run the following command, which will generate the AUC performance for each legal field and positive, negative word list in terminal.
 ``` sh
