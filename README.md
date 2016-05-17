@@ -6,7 +6,7 @@
   - Sida Ye(sy1743) sy1743@nyu.edu
   - Xingye Zhang(xz601) xz601@nyu.edu
 
-Note: You can run the commands in Part5 directly to get the result. But you can read the following parts to understading the process.
+Note: You can run the commands in Part 4 directly to get the result. But you can read the following parts to understading the process.
 
 ### Part 0: Environment Setup
 1. run the following commands to download our projects
@@ -20,31 +20,22 @@ $ cd code
 2. poster: contains poster we used in poster session
 3. report: contains final report
 
-### Part 2 : Label Generation
-Run the following command in terminal. It will generate new files with binary panel vote label.
-``` sh
-$ python label_generation.py
-```
-Combine all legal fields csv into one
-``` sh
-$ awk 'FNR > 1' ./data/modified_case/*.csv > ./data/bigfile.csv
-```
-The bigfile.csv is the dataframe we are going to merge in the next step.
-
-### Part 3: Data Clean, Merge
+### Part 2: Data Clean, Merge
 
 1.  Merge 100Votelevel_touse.dta, sunstein_data_for_updating.csv and bigfile.csv to get dataframe with caseid, panel vote and legal field.
-    * We have 100Votelevel_touse.dta, which contains case_id (start with X) and citation. We also have sunstein_data_for_updating.csv, which contains citation and issue, which represent legal fields.  After merging these two files on citation, we got 2526 records with case_id, citation and issue in columns. By citation and issue, we then get dataframe with case_id, citation, issue and its corresponding panel vote from part2. We also delivery a target case id list for matching caseid in Vocab_map_text file.
+    * We have 100Votelevel_touse.dta, which contains case_id (start with X) and citation. We also have sunstein_data_for_updating.csv, which contains citation and issue, which represent legal fields.  After merging these two files on citation, we got 2526 records with case_id, citation and issue in columns. By citation and issue, we then get dataframe with case_id, citation, issue and its corresponding panel vote. We also delivery a target case id list for matching caseid in Vocab_map_text file.
     * It will delivery a dataframe called init_df.
 
 2. Clean Vocab_map_text file.
     * Finding target case id list from step 1. It will convert the original vocab_map_txt file format into (word_id, n-gram dictionary) format.
     * It will delivery a target_ngram_df.
 
-3. Merge init_df, target_ngram_df and bigfile.csv. We then get our final_df.csv which contains case_id, n-gram, panel_vote, issue(int) and legal field(string).
+3. Merge init_df, target_ngram_df. We then get our final_df.csv which contains case_id, n-gram, panel_vote, issue(int) and legal field(string).
+```sh
+python merge_data.py
+```
 
-
-### Part 4: Feature Selection
+### Part 3: Feature Selection
 
 1. Spilt the final_df.csv into 16 dataframe based on the legal fields.
 
@@ -56,8 +47,9 @@ python feature_selection.py
 It will generate 16 csv files corresponding to each legal fields under ./code/field/ directory.
 
 
-### Part 5 : Modeling and Generating Key Word Features
-This part will use dataframe from part4 feature selection.
+### Part 4: Modeling and Generating Key Word Features
+This part will use dataframe from part4 feature selection. We also check the correlation between panelvote and x_dem in Circuit_Cases. If the correlation is postive, we would like to consider panel vote with 2,3 as liberal which is 1.
+
 1. Find target word feature id
 ``` sh
 python word_generate.py
